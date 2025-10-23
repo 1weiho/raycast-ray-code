@@ -1,19 +1,15 @@
 import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { resolveAndValidatePath } from "../utils/workspace";
 
 type Input = {
   /**
-   * The absolute or relative path to the file
+   * The relative path to the file from the workspace root
    */
   path: string;
 };
 
 export default async function ({ path }: Input) {
-  if (!path) {
-    throw new Error("path is required");
-  }
-
-  const filePath = resolve(path);
+  const filePath = resolveAndValidatePath(path);
   const content = await readFile(filePath, "utf8");
 
   return content;

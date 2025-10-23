@@ -1,15 +1,15 @@
 import { readdir } from "node:fs/promises";
-import { resolve } from "node:path";
+import { resolveAndValidatePath } from "../utils/workspace";
 
 type Input = {
   /**
-   * The absolute or relative path to the directory
+   * The relative path to the directory from the workspace root
    */
   path: string;
 };
 
 export default async function ({ path }: Input) {
-  const dirPath = resolve(path);
+  const dirPath = resolveAndValidatePath(path);
   const files = await readdir(dirPath);
 
   return files;

@@ -1,9 +1,9 @@
 import { readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { resolveAndValidatePath } from "../utils/workspace";
 
 type Input = {
   /**
-   * The absolute or relative path to the file
+   * The relative path to the file from the workspace root
    */
   path: string;
   /**
@@ -13,7 +13,7 @@ type Input = {
 };
 
 export default async function ({ path, query }: Input) {
-  const filePath = resolve(path);
+  const filePath = resolveAndValidatePath(path);
   const content = await readFile(filePath, "utf8");
   const matches = content.match(new RegExp(query, "g"));
 

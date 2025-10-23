@@ -21,6 +21,15 @@
       "mode": "view"
     }
   ],
+  "preferences": [
+    {
+      "name": "workspaceRoot",
+      "title": "Workspace Root Directory",
+      "description": "Specify the root directory for all file-based operations.",
+      "type": "directory",
+      "required": true
+    }
+  ],
   "dependencies": {
     "@raycast/api": "^1.103.3",
     "@raycast/utils": "^1.17.0"
