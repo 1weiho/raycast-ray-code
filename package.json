@@ -46,6 +46,11 @@
       "name": "read-file",
       "title": "Read File",
       "description": "Read a file from the workspace"
+    },
+    {
+      "name": "list-dir",
+      "title": "List Directory",
+      "description": "List a directory from the workspace"
     }
   ]
 }

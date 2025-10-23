@@ -6,23 +6,15 @@ type Input = {
    * The absolute or relative path to the file
    */
   path: string;
-  /**
-   * Text encoding. Defaults to utf-8.
-   */
-  encoding?: BufferEncoding;
 };
 
-type Output = {
-  content: string;
-};
-
-export default async function ({ path, encoding = "utf8" }: Input): Promise<Output> {
+export default async function ({ path }: Input) {
   if (!path) {
     throw new Error("path is required");
   }
 
   const filePath = resolve(path);
-  const content = await readFile(filePath, { encoding });
+  const content = await readFile(filePath, "utf8");
 
-  return { content };
+  return content;
 }
