@@ -1,4 +1,5 @@
 import { readdir } from "node:fs/promises";
+import { resolve } from "node:path";
 
 type Input = {
   /**
@@ -8,6 +9,8 @@ type Input = {
 };
 
 export default async function ({ path }: Input) {
-  const files = await readdir(path);
+  const dirPath = resolve(path);
+  const files = await readdir(dirPath);
+
   return files;
 }

@@ -51,6 +51,11 @@
       "name": "list-dir",
       "title": "List Directory",
       "description": "List a directory from the workspace"
+    },
+    {
+      "name": "grep",
+      "title": "Grep",
+      "description": "Grep a file from the workspace"
     }
   ]
 }
