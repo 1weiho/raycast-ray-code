@@ -70,6 +70,11 @@
       "name": "search-files",
       "title": "Search Files",
       "description": "Search for files by name using fuzzy matching"
+    },
+    {
+      "name": "apply-edit",
+      "title": "Apply Edit",
+      "description": "Apply text replacements to a file (search and replace)"
     }
   ]
 }
