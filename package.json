@@ -65,6 +65,11 @@
       "name": "grep",
       "title": "Grep",
       "description": "Grep a file from the workspace"
+    },
+    {
+      "name": "search-files",
+      "title": "Search Files",
+      "description": "Search for files by name using fuzzy matching"
     }
   ]
 }
