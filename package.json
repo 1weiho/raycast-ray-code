@@ -75,6 +75,11 @@
       "name": "apply-edit",
       "title": "Apply Edit",
       "description": "Apply text replacements to a file (search and replace)"
+    },
+    {
+      "name": "delete-file",
+      "title": "Delete File",
+      "description": "Delete a file from the workspace"
     }
   ]
 }
