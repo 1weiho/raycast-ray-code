@@ -80,6 +80,11 @@
       "name": "delete-file",
       "title": "Delete File",
       "description": "Delete a file from the workspace"
+    },
+    {
+      "name": "create-file",
+      "title": "Create File",
+      "description": "Create a new file in the workspace"
     }
   ]
 }
