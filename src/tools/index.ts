@@ -4,4 +4,3 @@ export { default as grep } from "./grep";
 export { default as searchFiles } from "./search-files";
 export { default as applyEdit } from "./apply-edit";
 export { default as deleteFile } from "./delete-file";
-export { getWorkspaceRoot, resolveAndValidatePath } from "../utils/workspace";
