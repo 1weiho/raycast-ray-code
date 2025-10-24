@@ -15,9 +15,9 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "start-chat",
-      "title": "Start Chat",
-      "description": "This is the entry point for the extension",
+      "name": "get-started",
+      "title": "Get Started with Ray Code",
+      "description": "Learn how to configure the Ray Code extension",
       "mode": "view"
     }
   ],
