@@ -5,6 +5,7 @@
   "description": "A agentic coding extension for vibe coder",
   "icon": "extension-icon.png",
   "author": "1weiho",
+  "owner": "tokyo-ai-hackathon",
   "platforms": [
     "macOS",
     "Windows"
