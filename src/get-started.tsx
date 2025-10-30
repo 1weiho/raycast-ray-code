@@ -1,27 +1,59 @@
-import { Detail } from "@raycast/api";
-
-const markdown = `# Get Started with Ray Code
-
-Ray Code bundles AI-powered tools that extend Raycast AI Chat with Vibe Coding workflows. Follow these steps before you start:
-
-## 1. Configure the Workspace Root Directory
-
-- Open Raycast Preferences (Cmd + ,)
-- Select the Extensions tab
-- Select the Ray Code and point the Workspace Root Directory to the root of the project you want to work on
-- Save the preference so every tool uses that directory as its base path
-
-## 2. Try the Available Tools
-
-Once the workspace is set, you can run tools such as Read File and List Directory directly inside Raycast AI Chat. Combine them to inspect, modify, or navigate your repository with minimal context switching.
-
-## 3. Troubleshooting Tips
-
-- If a tool cannot access files, double-check the Workspace Root Directory setting
-- To switch projects, update the preference to a different path and rerun your tools
-
-Enjoy building with Ray Code!`;
+import { Action, ActionPanel, Icon, List, getPreferenceValues } from "@raycast/api";
+import { basename } from "node:path";
 
 export default function Command() {
-  return <Detail markdown={markdown} navigationTitle="Get Started with Ray Code" />;
+  const preferences = getPreferenceValues<{ workspaceRoot?: string }>();
+  const workspaceRoot = preferences.workspaceRoot;
+
+  if (workspaceRoot) {
+    const projectName = basename(workspaceRoot);
+    return (
+      <List searchBarPlaceholder="Workspace Connected">
+        <List.EmptyView
+          title={`Workspace Connected: ${projectName}`}
+          description="Start vibe coding with @ray-code AI Extension"
+          icon={{
+            source: Icon.Stars,
+            tintColor: "#D57355",
+          }}
+          actions={
+            <ActionPanel>
+              <Action.Open
+                icon={Icon.Gear}
+                title="Open Extension Preferences"
+                target="raycast://extensions/raycast/raycast/manage-extensions"
+              />
+            </ActionPanel>
+          }
+        />
+      </List>
+    );
+  }
+
+  return (
+    <List searchBarPlaceholder="Setup Workspace Directory">
+      <List.EmptyView
+        title="Setup Workspace Directory"
+        description="Please configure your workspace root directory to use Ray Code features."
+        icon={{
+          source: Icon.Folder,
+          tintColor: "#FF9500",
+        }}
+        actions={
+          <ActionPanel>
+            <Action.Open
+              icon={Icon.Gear}
+              title="Open Extension Preferences"
+              target="raycast://extensions/raycast/raycast/manage-extensions"
+            />
+            <Action.OpenInBrowser
+              icon={Icon.QuestionMark}
+              title="View Setup Guide"
+              url="https://manual.raycast.com/extensions"
+            />
+          </ActionPanel>
+        }
+      />
+    </List>
+  );
 }
