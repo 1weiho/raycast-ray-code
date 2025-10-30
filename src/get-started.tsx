@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Icon, List, getPreferenceValues } from "@raycast/api";
+import { Action, ActionPanel, Icon, List, getPreferenceValues, openExtensionPreferences } from "@raycast/api";
 import { basename } from "node:path";
 
 export default function Command() {
@@ -18,11 +18,7 @@ export default function Command() {
           }}
           actions={
             <ActionPanel>
-              <Action.Open
-                icon={Icon.Gear}
-                title="Open Extension Preferences"
-                target="raycast://extensions/raycast/raycast/manage-extensions"
-              />
+              <Action icon={Icon.Gear} title="Open Extension Preferences" onAction={openExtensionPreferences} />
             </ActionPanel>
           }
         />
