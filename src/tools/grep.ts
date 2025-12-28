@@ -12,10 +12,15 @@ type Input = {
   query: string;
 };
 
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 export default async function ({ path, query }: Input) {
   const filePath = resolveAndValidatePath(path);
   const content = await readFile(filePath, "utf8");
-  const matches = content.match(new RegExp(query, "g"));
+  const escapedQuery = escapeRegExp(query);
+  const matches = content.match(new RegExp(escapedQuery, "g"));
 
-  return matches;
+  return matches || [];
 }

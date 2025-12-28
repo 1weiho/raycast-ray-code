@@ -28,7 +28,7 @@ async function searchFilesRecursive(dirPath: string, query: string, workspaceRoo
 
       // Skip common directories that should be ignored
       if (entry.isDirectory()) {
-        const skipDirs = ["node_modules", ".git", ".next", ".vscode", "dist", "build", ".DS_Store"];
+        const skipDirs = ["node_modules", ".git", ".next", ".vscode", "dist", "build"];
         if (skipDirs.includes(entry.name)) {
           continue;
         }
