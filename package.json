@@ -28,6 +28,15 @@
       "description": "Specify the root directory for all file-based operations.",
       "type": "directory",
       "required": true
+    },
+    {
+      "name": "autoEdit",
+      "title": "Auto Edit",
+      "description": "When enabled, file operations (create, edit, delete) will be executed without confirmation prompts.",
+      "type": "checkbox",
+      "default": false,
+      "required": false,
+      "label": "Skip confirmation for file operations"
     }
   ],
   "dependencies": {
