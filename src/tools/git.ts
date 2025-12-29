@@ -132,13 +132,13 @@ export default async function ({ subcommand, args = "" }: Input) {
   const workspaceRoot = getWorkspaceRoot();
   const command = `git ${subcommand}${args ? ` ${args}` : ""}`;
 
-  // Use interactive login shell to ensure git is found
-  // Using execFile with argument array prevents shell injection by avoiding shell interpretation
-  const userShell = process.env.SHELL || "/bin/zsh";
+  // Parse args into an array for safe execution
+  // This avoids shell interpretation entirely by passing arguments directly to git
+  const gitArgs = [subcommand, ...(args ? args.split(/\s+/).filter(Boolean) : [])];
 
   try {
-    // Pass command as a single argument to -c, avoiding shell metacharacter interpretation
-    const { stdout, stderr } = await execFileAsync(userShell, ["-l", "-i", "-c", command], {
+    // Execute git directly without a shell wrapper to prevent shell injection
+    const { stdout, stderr } = await execFileAsync("git", gitArgs, {
       cwd: workspaceRoot,
       timeout: DEFAULT_TIMEOUT,
       maxBuffer: 1024 * 1024 * 5, // 5MB buffer
